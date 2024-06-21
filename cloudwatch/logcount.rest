@@ -1,0 +1,26 @@
+## last hour logs count
+
+GET http://127.0.0.1:8000/api/cloudwatch/logs/log_count_interval/?interval_type=last_hour
+Accept: application/json
+Authorization: Token be2cb6f6451cb4aace1f64104aa0295824337ece
+
+
+### last day logs count
+
+GET http://127.0.0.1:8000/api/cloudwatch/logs/log_count_interval/?interval_type=last_day
+Accept: application/json
+Authorization: Token be2cb6f6451cb4aace1f64104aa0295824337ece
+
+
+### last weeek logs count
+
+GET http://127.0.0.1:8000/api/cloudwatch/logs/log_count_interval/?interval_type=last_week
+Accept: application/json
+Authorization: Token be2cb6f6451cb4aace1f64104aa0295824337ece
+
+
+### last_month logs count
+
+GET http://127.0.0.1:8000/api/cloudwatch/logs/log_count_interval/?interval_type=last_month
+Accept: application/json
+Authorization: Token be2cb6f6451cb4aace1f64104aa0295824337ece

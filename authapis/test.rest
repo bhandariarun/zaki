@@ -1,0 +1,74 @@
+# Test cases for Auth APIs
+
+### Signup
+POST http://127.0.0.1:8000/api/auth/signup/
+Content-Type: application/json
+
+{
+    "username": "user1",
+    "password": "user@123",
+    "email": "user@example.com"
+}
+
+### Login
+POST http://127.0.0.1:8000/api/auth/login/
+Content-Type: application/json
+
+{
+    "username": "madhu-updated",
+    "password": "madhu@123"
+}
+
+### Test Token 
+GET http://127.0.0.1:8000/api/auth/testtoken HTTP/1.1
+Content-Type: application/json
+Authorization: Token 6046ff4b8599be1f7ec669a6431dbff214412c7f
+
+{}
+
+
+### Update User (Username)
+PATCH http://127.0.0.1:8000/api/auth/update-user/
+Content-Type: application/json
+Authorization: Token 07f71bab18c60b7986de49fa5c817e638f509f96
+
+{
+    "username": "madhu-updated"
+}
+
+### Update User (Email)
+PATCH http://127.0.0.1:8000/api/auth/update-user/
+Content-Type: application/json
+Authorization: Token 07f71bab18c60b7986de49fa5c817e638f509f96
+
+{
+    "email": "madhu-updated@example.com"
+}
+
+### Update User (Password)
+PATCH http://127.0.0.1:8000/api/auth/update-user/
+Content-Type: application/json
+Authorization: Token 07f71bab18c60b7986de49fa5c817e638f509f96
+
+{
+    "current_password": "madhu",
+    "new_password": "madhu@123"
+}
+
+### Update User (Username and Email)
+PATCH http://127.0.0.1:8000/api/auth/update-user/
+Content-Type: application/json
+Authorization: Token 07f71bab18c60b7986de49fa5c817e638f509f96
+
+{
+    "username": "madhu",
+    "email": "madhu@example.com"
+}
+
+
+### Logout User
+POST http://127.0.0.1:8000/api/auth/logout/
+Content-Type: application/json
+Authorization: Token 6046ff4b8599be1f7ec669a6431dbff214412c7f
+
+{}

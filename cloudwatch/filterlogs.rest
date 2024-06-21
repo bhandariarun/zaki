@@ -1,0 +1,55 @@
+# Test case 1: Filter by logGroupName
+GET http://127.0.0.1:8000/api/cloudwatch/filter-logs?logGroupName=kibanalogs HTTP/1.1
+Accept: application/json
+
+###
+
+# Test case 2: Filter by logstreamname
+GET http://127.0.0.1:8000/api/cloudwatch/filter-logs?logStreamName=EC2 HTTP/1.1
+Accept: application/json
+Authorization: Token be2cb6f6451cb4aace1f64104aa0295824337ece
+
+###
+
+# Test case 3: Filter by period
+GET http://127.0.0.1:8000/api/cloudwatch/filter-logs?period=last_week HTTP/1.1
+Accept: application/json
+Authorization: Token be2cb6f6451cb4aace1f64104aa0295824337ece
+
+###
+
+# Test case 4: Filter by securityinfo
+GET http://127.0.0.1:8000/api/cloudwatch/filter-logs?securityinfo=INFO HTTP/1.1
+Accept: application/json
+
+
+
+###
+
+# Test case 5: Filter by logGroupName and logStreamName
+GET http://127.0.0.1:8000/api/cloudwatch/filter-logs?logGroupName=kibanalogs&logStreamName=EC2 HTTP/1.1
+Accept: application/json
+
+###
+
+# Test case 6: Filter by logname, logstreamname, and period
+GET http://127.0.0.1:8000/api/cloudwatch/filter-logs?logGroupName=kibanalogs&logStreamName=EC2&period=last_day HTTP/1.1
+Accept: application/json
+
+###
+
+# Test case 7: Filter by all parameters
+GET http://127.0.0.1:8000/api/cloudwatch/filter-logs?logGroupName=example_log&logStreamName=example_stream&period=last_day&securityinfo=INFO HTTP/1.1
+Accept: application/json
+
+###
+
+# Test case 8: Invalid securityinfo
+GET http://127.0.0.1:8000/api/cloudwatch/filter-logs?securityinfo=INVALID HTTP/1.1
+Accept: application/json
+
+###
+
+# Test case 9: No filters
+GET http://127.0.0.1:8000/api/cloudwatch/filter-logs HTTP/1.1
+Accept: application/json

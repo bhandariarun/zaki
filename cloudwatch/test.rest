@@ -1,0 +1,112 @@
+# List all logs
+GET http://127.0.0.1:8000/api/cloudwatch/logs/
+Authorization: TOKEN f0fc97844f822e172783cfe657d012151a0cd2c7
+Accept: application/json
+
+###
+
+# Create a new log
+POST http://127.0.0.1:8000/api/cloudwatch/logs/
+Content-Type: application/json
+Authorization: TOKEN 9d1a9885109f0f8995d4b1a67bd7ddd20773c8cb
+
+{
+  "logGroupName": "elasticlogs",
+  "logStreamName": "nodes",
+  "owner": "1",
+  "timestamp": "2024-06-25T12:47:05.889+05:45",
+  "message": "[ERROR ][o.e.c.m.MetadataIndexTemplateService] [gr7me] updating index template [.alerts-observability.uptime.alerts-default-index-template] for index patterns] [.internal.alerts-observability.uptime.alerts-default-*]",
+  "ingestionTime": 162367444969
+}
+
+
+###
+
+# Retrieve a specific log
+GET http://127.0.0.1:8000/api/cloudwatch/logs/1/
+Accept: application/json
+
+###
+
+# Update a specific log
+PUT http://127.0.0.1:8000/api/cloudwatch/logs/1/
+Content-Type: application/json
+
+{
+  "logGroupName": "elasticlogs",
+  "logStreamName": "gr7me_updated",
+  "owner": 1,
+  "timestamp": "2024-06-12T12:34:56Z",
+  "message": "[INFO ][o.e.c.m.MetadataIndexTemplateService] [gr7me] updating index template [.alerts-observability.logs.alerts-default-index-template] for index patterns [.internal.alerts-observability.logs.alerts-default-*]",
+  "ingestionTime": 1623324425
+}
+
+###
+
+# Partial update a specific log
+PATCH http://127.0.0.1:8000/api/cloudwatch/logs/1/
+Content-Type: application/json
+
+{
+  "logStreamName": "gr7me"
+}
+
+###
+
+# Delete a specific log
+DELETE http://127.0.0.1:8000/api/cloudwatch/logs/1/
+
+
+### List log counts
+
+GET http://127.0.0.1:8000/api/cloudwatch/log-counts/
+Accept: application/json
+Authorization: Token 8a29e9b0308c0fbd83b7df275a81ad34560f6b7f
+
+
+
+### Get logs from the last hour
+GET http://localhost:8000/api/cloudwatch/logs/?period=last_hour
+Content-Type: application/json
+
+### Get logs from the last 24 hours
+GET http://localhost:8000/api/cloudwatch/logs/?period=last_day
+Content-Type: application/json
+
+### Get logs from the last week
+GET http://localhost:8000/api/cloudwatch/logs/?period=last_week
+Content-Type: application/json
+
+### Get logs from the last month
+GET http://localhost:8000/api/cloudwatch/logs/?period=last_month
+Content-Type: application/json
+
+
+### Test fetching logs with [WARN] security info
+GET http://localhost:8000/api/cloudwatch/filter-logs/?security_info=WARN
+Content-Type: application/json
+
+### Test fetching logs with [INFO] security info
+GET http://localhost:8000/api/cloudwatch/filter-logs/?security_info=INFO 
+Content-Type: application/json
+
+
+### Test fetching logs with [ERROR] security info
+GET http://localhost:8000/api/cloudwatch/filter-logs/?security_info=ERROR 
+Content-Type: application/json
+
+### Get total logs count
+GET http://localhost:8000/api/cloudwatch/total-logs-count/
+Content-Type: application/json
+Authorization: Token 8a29e9b0308c0fbd83b7df275a81ad34560f6b7f
+
+### Get recent logs 
+GET http://localhost:8000/api/cloudwatch/recent-logs/
+Content-Type: application/json
+Authorization: Token 8a29e9b0308c0fbd83b7df275a81ad34560f6b7f
+
+
+### 
+GET http://localhost:8000/api/cloudwatch/logs/grouped/
+Content-Type: application/json
+Authorization: Token 8a29e9b0308c0fbd83b7df275a81ad34560f6b7f
